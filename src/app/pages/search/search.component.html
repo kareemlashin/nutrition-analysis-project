@@ -1,0 +1,66 @@
+<div class="container w-100">
+  <div class="shadow bg-search rounded pt-5 pb-1 px-2">
+
+    <form [formGroup]="from" (ngSubmit)="onSubmit()" >
+
+      <div class="row w-100">
+
+        <div class="col-md-6">
+          <label> {{'name'|translate}} :</label>
+          <input type="text" class="w-100  py-1 roundrd" name="name" [placeholder]="'name'|translate" formControlName="name">
+          <div class="mt-2" *ngIf="from.controls.name.errors !=null && from.controls.name.touched">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong> {{'oops'|translate}}!</strong> {{'name'|translate}} {{'required'|translate}}  
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-3">
+          <label>{{'quantity'|translate}} :</label>
+          <div>
+
+            <select name="quantity" formControlName="quantity" class="w-100  roundrd" id="">
+              <option value="small">small</option>
+              <option value="xsmall">xsmall</option>
+              <option value="large">large</option>
+              <option value="xlarge">xlarge</option>
+              <option value="cub">cub</option>
+            </select>
+          </div>
+          <div class="mt-2" *ngIf="from.controls.quantity.errors !=null && from.controls.quantity.touched">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>{{'oops'|translate}}!</strong> {{'quantity'|translate}}   {{'required'|translate}} 
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-3">
+          <label> {{'count'|translate}}:</label>
+
+          <input type="number" class="w-100  py-1 roundrd" [placeholder]="'count'|translate" formControlName="count"
+            name="count" id="">
+          <div class="mt-2" *ngIf="from.controls.count.errors !=null && from.controls.count.touched">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>{{'oops'|translate}}!</strong> {{'count'|translate}}  {{'required'|translate}}{{'number'|translate}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div class="text-center my-3 w-100">
+          <button class="mx-auto px-4 py-1 but  text-center rounded-pill" [disabled]="!from.valid">submit</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+</div>

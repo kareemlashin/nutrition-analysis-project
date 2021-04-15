@@ -1,0 +1,22 @@
+<nav class="d-flex  shadow bg-nav p-2 middle fixed-top">
+  <div class="d-flex logo middle justify-content-center align-items-center">
+    <a [routerLink]="['/']"> {{"logo"|translate}}
+    </a>
+  </div>
+  <div class="m__fix-auto pt-1 middle">
+    <button class="language-change but rounded-pill" *ngIf="lang==='en'?true:false" (click)="switchLang('ar')">العربيه </button>
+    <button class="language-change but rounded-pill" *ngIf="lang==='ar'?true:false" (click)="switchLang('en')"> English </button>
+
+  </div>
+  <div class="d-flex justify-content-center align-items-center mx-3 middle">
+    <div class="container-switch">
+      <label class="switch" for="checkbox" title="Change color scheme to dark mode">
+        <input type="checkbox" id="checkbox" [checked]="checked==='dark'?true:false" (change)="changeMood($event)" />
+        <div class="slider round"></div>
+        <div class="toggle-sun">☀️</div>
+        <div class="toggle-moon">🌙</div>
+
+      </label>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,24 @@
+{
+    "logo":"LOGO",
+    "label":"label",
+    "show-more":"show more",
+    "show-less":"show less",
+    "daily":"daily",
+    "totalDaily":"Total Daily",
+    "Nutrition-diet-Labels":"Nutrition diet Labels",
+    "Nutrition-cautions":"Nutrition cautions",
+    "totalWeight":"total Weight",
+    "calories":"calories",
+    "quantity":"quantity",
+    "name":"name",
+    "count":"count",
+    "oops":"oops",
+    "required":"is required",
+    "number":"and must be number",
+    "submit":"search",
+    "Home":"Home",
+    "Oh":"Oh no",
+    "Something":"Something went wrong! Please try again."
+
+
+}

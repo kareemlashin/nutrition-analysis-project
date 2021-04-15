@@ -1,0 +1,372 @@
+<div class="text-center" *ngIf="spinner">
+
+  <div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div class="container my-5" *ngIf="!spinner && Nutrition?.calories !=0  ? true:false && !error">
+  <div class="row">
+    <div class="col-md-5 mx-auto ">
+      <div class="shadow bg-nav analysis p-3 rounded">
+        <h5 class=" ">
+
+            {{'name'|translate|uppercase}}
+  
+            <span class="float-item">
+              {{name|uppercase}}
+  
+            </span>
+  
+          </h5>
+
+          <h5 class="  border-top pt-2">
+
+            {{'count'|translate|uppercase}}
+  
+            <span class="float-item">
+              {{count}}
+  
+            </span>
+  
+          </h5>
+  
+        
+
+        <h5 class=" border-top pt-2">
+          {{'calories'|translate|uppercase}}
+          <span class="float-item">
+
+            {{Nutrition?.calories}}
+
+          </span>
+
+        </h5>
+
+        <h5 class=" border-top pt-2">
+
+          {{'totalWeight'|translate|uppercase}}
+          <span class="float-item">
+
+            {{Nutrition?.totalWeight}}
+          </span>
+
+        </h5>
+
+        <div>
+
+          <h5 class="border-top pt-2">
+            {{'Nutrition-cautions'|translate}}
+
+          </h5>
+          <ul>
+            <li class="warn mb-3" *ngFor="let item of Nutrition?.cautions">{{item}}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="border-top pt-2">
+
+            {{'Nutrition-diet-Labels'|translate}}
+
+
+          </h5>
+
+          <ul>
+            <li class="mb-3" *ngFor="let item of Nutrition?.dietLabels">{{item}}</li>
+          </ul>
+        </div>
+
+        <div>
+          <ul>
+            <li *ngFor="let item of Nutrition?.healthLabels|slice:0:manyLabels">{{item}}</li>
+
+          </ul>
+          <div class="text-center my-2" *ngIf="Nutrition?.healthLabels.length<5?false:true">
+            <button (click)="Labels()" class="but rounded-pill px-5 py-1" *ngIf="moreLabels">
+              {{'show-more'|translate}}
+              {{'label'|translate}}
+
+            </button>
+            <button  (click)="lessLabels()" class="but rounded-pill px-5 py-1" *ngIf="!moreLabels">
+              {{'show-less'|translate}}
+              {{'label'|translate}}
+
+            </button>
+
+          </div>
+
+        </div>
+
+        <h6 class="my-3 text-center t_border border-top pt-2">
+          {{'totalDaily'|translate|uppercase}}
+
+
+        </h6>
+        <div>
+          {{Nutrition?.totalDaily.CA.label}} 
+          <span class="float-item">
+            {{Nutrition?.totalDaily.CA.quantity|number :'1.2-2'}}
+            {{Nutrition?.totalDaily.CA.unit}}
+
+          </span>
+
+
+        </div>
+
+
+        <div>
+          {{Nutrition?.totalDaily.CHOCDF.label}}
+          <span class="float-item">
+
+            {{Nutrition?.totalDaily.CHOCDF.quantity|number :'1.2-2'}}
+            {{Nutrition?.totalDaily.CHOCDF.unit}}
+          </span>
+
+        </div>
+
+        <div>
+          {{Nutrition?.totalDaily.ENERC_KCAL.label}}
+          <span class="float-item">
+
+            {{Nutrition?.totalDaily.ENERC_KCAL.quantity|number :'1.2-2'}}
+            {{Nutrition?.totalDaily.ENERC_KCAL.unit}}
+          </span>
+
+        </div>
+
+        <div>
+          {{Nutrition?.totalDaily.FASAT.label}}
+          <span class="float-item">
+
+            {{Nutrition?.totalDaily.FASAT.quantity|number :'1.2-2'}}
+            {{Nutrition?.totalDaily.FASAT.unit}}
+          </span>
+
+        </div>
+
+        <div>
+          {{Nutrition?.totalDaily.FAT.label}}
+          <span class="float-item">
+
+            {{Nutrition?.totalDaily.FAT.quantity|number :'1.2-2'}}
+            {{Nutrition?.totalDaily.FAT.unit}}
+
+          </span>
+        </div>
+        <div>
+          {{Nutrition?.totalDaily.FE.label}}
+          <span class="float-item">
+
+            {{Nutrition?.totalDaily.FE.quantity|number :'1.2-2'}}
+            {{Nutrition?.totalDaily.FE.unit}}
+          </span>
+
+        </div>
+        <div>
+          {{Nutrition?.totalDaily.FIBTG.label}} <span class="float-item">
+
+            {{Nutrition?.totalDaily.FIBTG.quantity|number :'1.2-2'}}
+            {{Nutrition?.totalDaily.FIBTG.unit}}
+
+          </span>
+        </div>
+        <div>
+          {{Nutrition?.totalDaily.FOLDFE.label}}
+          <span class="float-item">
+
+            {{Nutrition?.totalDaily.FOLDFE.quantity|number :'1.2-2'}}
+            {{Nutrition?.totalDaily.FOLDFE.unit}}
+          </span>
+
+        </div>
+
+        <div class="text-center ">
+          <button *ngIf="daily" class="but rounded-pill my-2 px-5 py-1" (click)="moreDaily()">
+            {{'show-more'|translate}}
+            {{'daily'|translate}}
+
+          </button>
+
+        </div>
+
+        <div *ngIf="!daily">
+
+
+
+          <div>
+            {{Nutrition?.totalDaily.K.label}}
+            <span class="float-item">
+
+              {{Nutrition?.totalDaily.K.quantity|number :'1.2-2'}}
+              {{Nutrition?.totalDaily.K.unit}}
+            </span>
+
+          </div>
+          <div>
+            {{Nutrition?.totalDaily.MG.label}}
+            <span class="float-item">
+
+              {{Nutrition?.totalDaily.MG.quantity|number :'1.2-2'}}
+              {{Nutrition?.totalDaily.MG.unit}}
+            </span>
+
+          </div>
+          <div>
+            {{Nutrition?.totalDaily.NA.label}}
+            <span class="float-item">
+
+              {{Nutrition?.totalDaily.NA.quantity|number :'1.2-2'}}
+              {{Nutrition?.totalDaily.NA.unit}}
+            </span>
+
+          </div>
+          <div>
+            {{Nutrition?.totalDaily.NIA.label}}
+            <span class="float-item">
+
+              {{Nutrition?.totalDaily.NIA.quantity|number :'1.2-2'}}
+              {{Nutrition?.totalDaily.NIA.unit}}
+            </span>
+
+          </div>
+          <div>
+            {{Nutrition?.totalDaily.P.label}}
+            <span class="float-item">
+
+              {{Nutrition?.totalDaily.P.quantity|number :'1.2-2'}}
+              {{Nutrition?.totalDaily.P.unit}}
+            </span>
+
+          </div>
+          <div>
+            {{Nutrition?.totalDaily.PROCNT.label}}
+            <span class="float-item">
+
+              {{Nutrition?.totalDaily.PROCNT.quantity|number :'1.2-2'}}
+              {{Nutrition?.totalDaily.PROCNT.unit}}
+            </span>
+
+          </div>
+
+          <div>
+            {{Nutrition?.totalDaily.RIBF.label}}
+            <span class="float-item">
+              {{Nutrition?.totalDaily.RIBF.quantity|number :'1.2-2'}}
+              {{Nutrition?.totalDaily.RIBF.unit}}
+            </span>
+
+          </div>
+          <div>
+            {{Nutrition?.totalDaily.THIA.label}}
+            <span class="float-item">
+              {{Nutrition?.totalDaily.THIA.quantity|number :'1.2-2'}}
+              {{Nutrition?.totalDaily.THIA.unit}}
+            </span>
+
+          </div>
+
+          <div>
+            {{Nutrition?.totalDaily.TOCPHA.label}}
+            <span class="float-item">
+              {{Nutrition?.totalDaily.TOCPHA.quantity|number :'1.2-2'}}
+              {{Nutrition?.totalDaily.TOCPHA.unit}}
+            </span>
+
+          </div>
+          <div>
+            {{Nutrition?.totalDaily.VITA_RAE.label}}
+            <span class="float-item">
+              {{Nutrition?.totalDaily.VITA_RAE.quantity|number :'1.2-2'}}
+              {{Nutrition?.totalDaily.VITA_RAE.unit}}
+
+            </span>
+          </div>
+          <div>
+            {{Nutrition?.totalDaily.VITB6A.label}}
+            <span class="float-item">
+              {{Nutrition?.totalDaily.VITB6A.quantity|number :'1.2-2'}}
+              {{Nutrition?.totalDaily.VITB6A.unit}}
+            </span>
+
+          </div>
+          <div>
+            {{Nutrition?.totalDaily.VITB12.label}}
+            <span class="float-item">
+              {{Nutrition?.totalDaily.VITB12.quantity|number :'1.2-2'}}
+              {{Nutrition?.totalDaily.VITB12.unit}}
+            </span>
+
+          </div>
+          <div>
+            {{Nutrition?.totalDaily.VITC.label}}
+            <span class="float-item">
+              {{Nutrition?.totalDaily.VITC.quantity|number :'1.2-2'}}
+              {{Nutrition?.totalDaily.VITC.unit}}
+            </span>
+
+          </div>
+          <div>
+            {{Nutrition?.totalDaily.VITD.label}}
+            <span class="float-item">
+              {{Nutrition?.totalDaily.VITD.quantity|number :'1.2-2'}}
+              {{Nutrition?.totalDaily.VITD.unit}}
+            </span>
+
+          </div>
+
+          <div>
+            {{Nutrition?.totalDaily.VITK1.label}}
+            <span class="float-item">
+              {{Nutrition?.totalDaily.VITK1.quantity|number :'1.2-2'}}
+              {{Nutrition?.totalDaily.VITK1.unit}}
+
+            </span>
+          </div>
+          <div>
+            {{Nutrition?.totalDaily.ZN.label}}
+            <span class="float-item">
+              {{Nutrition?.totalDaily.ZN.quantity|number :'1.2-2'}}
+              {{Nutrition?.totalDaily.ZN.unit}}
+            </span>
+
+          </div>
+          <div class="text-center my-2">
+            <button class="but rounded-pill px-5 py-1" (click)="lessDaily()">
+              {{'show-less'|translate}}
+
+            </button>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="mt-5 pt-5" *ngIf="!spinner && Nutrition?.calories == 0 ? true:false || error">
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 mx-auto">
+            <div class="  ">
+                
+
+                <div class="card error">
+                    <div class="icon"></div>
+                    <h2>
+                     {{'Oh'|translate}}!
+
+                    </h2>
+                    <p>
+                        {{'Something'|translate}}
+                    </p>
+                    <a class="rounded-pill px-1 py-1" [routerLink]="[ '/search' ]">{{'Home'|translate}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

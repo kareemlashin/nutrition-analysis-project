@@ -1,0 +1,9 @@
+<div [dir]="dir" [ngClass]="{'dark':mood=='dark'?true:false,'light':mood=='light'?true:false}">
+  <app-loading *ngIf="loading"></app-loading>
+  <app-nav (dir)="dir=$event" (mood)="mood=$event"></app-nav>
+  <div class="fix__margin d-flex align-items-center justify-content-center w-100">
+    <div class="w-100">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
